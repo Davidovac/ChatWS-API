@@ -11,7 +11,8 @@ namespace ChatWS_API
     {
         public override async Task OnConnectedAsync()
         {
-            await Clients.All.ReceiveNotification($"Thank you for connecting, : {Context.ConnectionId}");
+
+            //await Clients.All.ReceiveNotification($"Thank you for connecting, : {Context.ConnectionId}");
         }
 
         public string GetConnectionId()

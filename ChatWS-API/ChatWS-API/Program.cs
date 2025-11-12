@@ -18,7 +18,7 @@ namespace ChatWS_API
             {
                 options.AddPolicy("ReactJSDomain", policy =>
                 {
-                    policy.WithOrigins("https://localhost:5173")
+                    policy.WithOrigins("http://localhost:5173")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -26,6 +26,7 @@ namespace ChatWS_API
             });
 
             var app = builder.Build();
+            app.UseCors("ReactJSDomain");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -41,7 +42,6 @@ namespace ChatWS_API
 
             app.MapControllers();
             app.MapHub<NotificationHub>("/notificationHub");
-            app.UseCors("ReactJSDomain");
 
             app.Run();
         }

@@ -18,14 +18,14 @@ namespace ChatWS_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Notification notification)
         {
-            await _hubContext.Clients.All.ReceiveNotification($"-> {notification.Message}");
+            await _hubContext.Clients.All.ReceiveNotification(notification.Name + ": " + notification.Message);
             return Ok();
         }
     }
 
     public class Notification
     {
-        public int UserId { get; set; }
+        public string Name { get; set; }
         public string Message { get; set; }
     }
 }
